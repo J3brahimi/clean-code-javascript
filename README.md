@@ -1,3 +1,4 @@
+<div dir="rtl">
 # کد-تمیز-جاوا اسکریپت
 
 ## Table of Contents
@@ -2347,3 +2348,4 @@ This is also available in other languages:
   [frappacchio/clean-code-javascript/](https://github.com/frappacchio/clean-code-javascript/)
 
 **[⬆ بازگشت به بالا](#table-of-contents)**
+</div>
