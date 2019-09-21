@@ -1,69 +1,58 @@
-# clean-code-javascript
+# کد-تمیز-جاوا اسکریپت
 
 ## Table of Contents
 
-1. [Introduction](#introduction)
-2. [Variables](#variables)
-3. [Functions](#functions)
-4. [Objects and Data Structures](#objects-and-data-structures)
-5. [Classes](#classes)
+1. [معرفی](#introduction)
+2. [متغیرها](#variables)
+3. [توابع](#functions)
+4. [آبجکت‌ها و ساختمان داده](#objects-and-data-structures)
+5. [کلاس‌ها](#classes)
 6. [SOLID](#solid)
-7. [Testing](#testing)
-8. [Concurrency](#concurrency)
-9. [Error Handling](#error-handling)
-10. [Formatting](#formatting)
-11. [Comments](#comments)
-12. [Translation](#translation)
+7. [تست کردن](#testing)
+8. [هم‌زمانی](#concurrency)
+9. [مدیریت خطا‌ها](#error-handling)
+10. [قالب بندی](#formatting)
+11. [نظرات](#comments)
+12. [ترجمه](#translation)
 
-## Introduction
+## معرفی
 
 ![Humorous image of software quality estimation as a count of how many expletives
 you shout when reading code](http://www.osnews.com/images/comics/wtfm.jpg)
 
-Software engineering principles, from Robert C. Martin's book
-[_Clean Code_](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882),
-adapted for JavaScript. This is not a style guide. It's a guide to producing
-[readable, reusable, and refactorable](https://github.com/ryanmcdermott/3rs-of-software-architecture) software in JavaScript.
+اصول مهندسی نرم‌افزار, اقتباسی از کتاب [_کد تمیز_](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) Robert C. Martin برای جاوا اسکریپت
+, این یک راهنمای سبک نوشتن کد نیست. این یک راهنما برای نوشتن کدهایی با قابلیت
+[خوانایی, استفاده مجدد و تغییر ساختار](https://github.com/ryanmcdermott/3rs-of-software-architecture) در جاوا اسکریپت است.
 
-Not every principle herein has to be strictly followed, and even fewer will be
-universally agreed upon. These are guidelines and nothing more, but they are
-ones codified over many years of collective experience by the authors of
-_Clean Code_.
+اصولی که در اینجا ذکر می‌شوند فقط برای راحتی در کد نویسی است و این‌طور نیست که اگر آن‌ها را رعایت نکنید کدی که می‌نویسید سبک غلطی داشته باشد, این نکته هم قابل ذکر است تمام این اصول به توافق جهانی نرسیده‌اند. این فقط یک راهنمای سبک است نه چیز بیشتر, ولی این موارد طی سال‌ها تجربه توسط نویسنده‌ کتاب
+_کد تمیز_ جمع آوری شده‌اند.
 
-Our craft of software engineering is just a bit over 50 years old, and we are
-still learning a lot. When software architecture is as old as architecture
-itself, maybe then we will have harder rules to follow. For now, let these
-guidelines serve as a touchstone by which to assess the quality of the
-JavaScript code that you and your team produce.
+علم مهندسی نرم افزار فقط کمی بیشتر از 50 سال قدمت دارد, و ما همچنان در حال یادگیری هستیم. وقتی که سن معماری نرم افزار با معمار برار شد
+, شاید اون موقع قوانین سخت‌تری در مورد نوشتن کدها وضع بشه. اما در حال حاضر, اجازه دهید این دستورالعمل‌ها به عنوان سنگ بنایی برای ارزیابی کیفیت کدهای جاوا اسکریپت شما تیمتان استفاده شود.
 
-One more thing: knowing these won't immediately make you a better software
-developer, and working with them for many years doesn't mean you won't make
-mistakes. Every piece of code starts as a first draft, like wet clay getting
-shaped into its final form. Finally, we chisel away the imperfections when
-we review it with our peers. Don't beat yourself up for first drafts that need
-improvement. Beat up the code instead!
+آخرین نکته: دانستن این نکات بلافاصله شما را به توسعه دهنده بهتری تبدیل نمی‌کند, و رعایت این نکات برای چند سال به این معنی نیست که شما دیگر اشتباهی مرتکب نمی‌شوید. هر قطعه کد را به عنوان یک پیش نویس اولیه در نظر بگیرید, مانند گلی که برای ساخت کوزه استفاده می‌شود. در نهایت, ما اشتباهات کد خود با مقایسه کردن آن با کد تمیز ویرایش می‌کنیم. وقتی اشتباهاتی در کدهای خود می‌بینید خودتان را سرزنش نکنید.
 
-## **Variables**
+## **متغیرها**
 
-### Use meaningful and pronounceable variable names
+### از اسم‌های معنی دار و قابل تلفظ برای نام گذاری متغیرها استفاده کنید
 
-**Bad:**
+**بد:**
 
 ```javascript
 const yyyymmdstr = moment().format("YYYY/MM/DD");
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 const currentDate = moment().format("YYYY/MM/DD");
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
-### Use the same vocabulary for the same type of variable
+### از واژگان همسان برای نام گذاری استفاده کنید
 
-**Bad:**
+**بد:**
 
 ```javascript
 getUserInfo();
@@ -71,45 +60,46 @@ getClientData();
 getCustomerRecord();
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
-getUser();
+getUserInfo();
+getUserData();
+getUserRecord();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
-### Use searchable names
+### از اسم‌های قابل جستجو استفاده کنید
 
-We will read more code than we will ever write. It's important that the code we
-do write is readable and searchable. By _not_ naming variables that end up
-being meaningful for understanding our program, we hurt our readers.
-Make your names searchable. Tools like
-[buddy.js](https://github.com/danielstjules/buddy.js) and
+ما کدهای کمتری منویسیم به نسبت کدهایی که می‌خوانیم. این بسیار مهم است کدهایی که می‌نویسیم قابلیت جستجو و خوانایی داشته باشند. با نامگذاری متغیرها به‌صورتی که برای درک برنامه ما معنی ندارند، خوانندگان کدهایمان را ناراحت می‌کنیم.
+از اسم‌هایی برای متغیرها استفاده کنید که قابلیت جستجو داشته باشند. ابزارهایی مانند
+[buddy.js](https://github.com/danielstjules/buddy.js) و
 [ESLint](https://github.com/eslint/eslint/blob/660e0918933e6e7fede26bc675a0763a6b357c94/docs/rules/no-magic-numbers.md)
-can help identify unnamed constants.
+می‌توانند به شما کمک کنند که متغیرهای بی‌نام را شناسایی کنید.
 
-**Bad:**
+**بد:**
 
 ```javascript
-// What the heck is 86400000 for?
+// عدد 86400000 یعنی چه?
 setTimeout(blastOff, 86400000);
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
-// Declare them as capitalized named constants.
+// نام این متغیرها را با حروف بزرگ مشخص کنید.
+// عدد 86400000 تعداد میلی ثانیه در هر روز است
 const MILLISECONDS_IN_A_DAY = 86400000;
 
 setTimeout(blastOff, MILLISECONDS_IN_A_DAY);
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
-### Use explanatory variables
+### از متغیرهای توضیحی استفاده کنید
 
-**Bad:**
+**بد:**
 
 ```javascript
 const address = "One Infinite Loop, Cupertino 95014";
@@ -120,7 +110,7 @@ saveCityZipCode(
 );
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 const address = "One Infinite Loop, Cupertino 95014";
@@ -129,13 +119,13 @@ const [, city, zipCode] = address.match(cityZipCodeRegex) || [];
 saveCityZipCode(city, zipCode);
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
-### Avoid Mental Mapping
+### از چیزهایی که فقط خودتان می‌فهمید دوری کنید
 
-Explicit is better than implicit.
+بیان صریح بهتر از ذهنی است.
 
-**Bad:**
+**بد:**
 
 ```javascript
 const locations = ["Austin", "New York", "San Francisco"];
@@ -145,12 +135,12 @@ locations.forEach(l => {
   // ...
   // ...
   // ...
-  // Wait, what is `l` for again?
+  // صبر کنید,  `l` واسه چیه?
   dispatch(l);
 });
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 const locations = ["Austin", "New York", "San Francisco"];
@@ -164,14 +154,13 @@ locations.forEach(location => {
 });
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
-### Don't add unneeded context
+### از اضافه کردن محتوای غیر ضروری بپرهیزید
 
-If your class/object name tells you something, don't repeat that in your
-variable name.
+اگر نام کلاس/آبجکتی که ساخته‌اید بیانگر چیزی است, آن را در اسم متغیرهای موجود در آن تکرار نکنید.
 
-**Bad:**
+**بد:**
 
 ```javascript
 const Car = {
@@ -185,7 +174,7 @@ function paintCar(car) {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 const Car = {
@@ -199,16 +188,15 @@ function paintCar(car) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
-### Use default arguments instead of short circuiting or conditionals
+### از قابلیت پارامتر پیشفرض به‌جای short circuiting یا شرط ها استفاده کنید
 
-Default arguments are often cleaner than short circuiting. Be aware that if you
-use them, your function will only provide default values for `undefined`
-arguments. Other "falsy" values such as `''`, `""`, `false`, `null`, `0`, and
-`NaN`, will not be replaced by a default value.
+استفاده از پارامتر پیشفرض راه حل تمیزتری نصبت به short circuiting است. در نظر داشته باشید که وقتی از این روش استفاده می‌کنید تابع شما زمانی مقدار پیش فرض را ارائه می‌دهد که پارامتر برار `undefined`
+باشد. بقیه مقادیر مانند `''`, `""`, `false`, `null`, `0`, و
+`NaN`, با مقدار پیش فرض جایگزین نمی‌شوند.
 
-**Bad:**
+**بد:**
 
 ```javascript
 function createMicrobrewery(name) {
@@ -217,7 +205,7 @@ function createMicrobrewery(name) {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 function createMicrobrewery(name = "Hipster Brew Co.") {
@@ -225,32 +213,23 @@ function createMicrobrewery(name = "Hipster Brew Co.") {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
-## **Functions**
+## **توابع**
 
-### Function arguments (2 or fewer ideally)
+### پارامتر تابع (حالت ایده‌آل 2 پارامتر یا کمتر)
 
-Limiting the amount of function parameters is incredibly important because it
-makes testing your function easier. Having more than three leads to a
-combinatorial explosion where you have to test tons of different cases with
-each separate argument.
+محدود کردن تعداد پارامترهای تابع فوق‌العاده مهم است چون مرحله تست کردن تابع را راحت‌تر می‌کند. داشتن بیش از سه مورد پارامتر منجر به گمراهی ترکیبی می‌شود که در آن باید مواد مختلفی را با استدلال جداگانه تست کرد.
 
-One or two arguments is the ideal case, and three should be avoided if possible.
-Anything more than that should be consolidated. Usually, if you have
-more than two arguments then your function is trying to do too much. In cases
-where it's not, most of the time a higher-level object will suffice as an
-argument.
+استفاده از یک یا دو پارامتر ایده‌آل است, و در صورت امکان نباید از استفاده سه پارامتر استفاده کرد.
+و در هیچ صورت نباید از بیش از سه پارامت برای یک تابع استفاده کرد. معمولا, اگر تابع شما بیش از دو پارامتر دارد یعنی کارهای زیادی را انجام می‌دهد. در مواردی که جملهقبلی درست نیست, در بیشتر موارد می‌توانید از یک آبجکت به عنوان پارامتر ورودی تابع استفاده کنید.
 
-Since JavaScript allows you to make objects on the fly, without a lot of class
-boilerplate, you can use an object if you are finding yourself needing a
-lot of arguments.
+از آن‌جایی که ساخت آبجکت‌ها در جاوا اسکریپت کار دشواری نیست, شما مواقعی که احتیاج به تعداد زیادی پارامتر برای تابع خود دارید می‌توانید از آبجکت استفاده کنید.
 
-To make it obvious what properties the function expects, you can use the ES2015/ES6
-destructuring syntax. This has a few advantages:
+برای ای که مشخص شود تابع چه ویژگی‌هایی دارد, شما می‌توانید از ES2015/ES6
+destructuring syntax استفاده کنید. که از مزیت های آن می‌تون به موارد زیر اشاره کرد:
 
-1. When someone looks at the function signature, it's immediately clear what
-   properties are being used.
+1. وقتی کسی به ورودی‌های تابع نگاه کند, مشخص می‌شود که از چه ویژگی‌هایی استفاده شده‌است.
 2. Destructuring also clones the specified primitive values of the argument
    object passed into the function. This can help prevent side effects. Note:
    objects and arrays that are destructured from the argument object are NOT
@@ -258,7 +237,7 @@ destructuring syntax. This has a few advantages:
 3. Linters can warn you about unused properties, which would be impossible
    without destructuring.
 
-**Bad:**
+**بد:**
 
 ```javascript
 function createMenu(title, body, buttonText, cancellable) {
@@ -266,7 +245,7 @@ function createMenu(title, body, buttonText, cancellable) {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 function createMenu({ title, body, buttonText, cancellable }) {
@@ -281,17 +260,14 @@ createMenu({
 });
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
-### Functions should do one thing
+### هر تابع باید فقط یک کار انجام دهد
 
-This is by far the most important rule in software engineering. When functions
-do more than one thing, they are harder to compose, test, and reason about.
-When you can isolate a function to just one action, they can be refactored
-easily and your code will read much cleaner. If you take nothing else away from
-this guide other than this, you'll be ahead of many developers.
+این نکته با اختلاف یکی از مهم‌ترین قوانین مهندسی نرم افزار است. وقتی یک تابع بیشتر از یک کار انجام دهد, ساختن، تست کردن و استدلال آن سخت‌تر است.
+وقتی یک تابع را به گونه ای بنویسید که فقط یک کار را انجام دهد, می‌توانید آن‌ها را به‌سادگی refactored کنید و خوانایی کد شما بالا می‌رود. اگر شما فقط همین مورد از کل این راهنما را رعایت کنید از بسیاری از برنامه نویسان جلو هستید.
 
-**Bad:**
+**بد:**
 
 ```javascript
 function emailClients(clients) {
@@ -304,7 +280,7 @@ function emailClients(clients) {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 function emailActiveClients(clients) {
@@ -317,11 +293,11 @@ function isActiveClient(client) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
-### Function names should say what they do
+### نام تابع باید بیانگر آن کاری باشد که تابع انجام می‌دهد
 
-**Bad:**
+**بد:**
 
 ```javascript
 function addToDate(date, month) {
@@ -330,11 +306,11 @@ function addToDate(date, month) {
 
 const date = new Date();
 
-// It's hard to tell from the function name what is added
+// سخت است که از نام تابع بگویید که به چه چیزی اضافه می‌کند
 addToDate(date, 1);
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 function addMonthToDate(month, date) {
@@ -345,7 +321,7 @@ const date = new Date();
 addMonthToDate(1, date);
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Functions should only be one level of abstraction
 
@@ -353,7 +329,7 @@ When you have more than one level of abstraction your function is usually
 doing too much. Splitting up functions leads to reusability and easier
 testing.
 
-**Bad:**
+**بد:**
 
 ```javascript
 function parseBetterJSAlternative(code) {
@@ -380,7 +356,7 @@ function parseBetterJSAlternative(code) {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 function parseBetterJSAlternative(code) {
@@ -417,7 +393,7 @@ function parse(tokens) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Remove duplicate code
 
@@ -442,7 +418,7 @@ worse than duplicate code, so be careful! Having said this, if you can make
 a good abstraction, do it! Don't repeat yourself, otherwise you'll find yourself
 updating multiple places anytime you want to change one thing.
 
-**Bad:**
+**بد:**
 
 ```javascript
 function showDeveloperList(developers) {
@@ -476,7 +452,7 @@ function showManagerList(managers) {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 function showEmployeeList(employees) {
@@ -503,11 +479,11 @@ function showEmployeeList(employees) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Set default objects with Object.assign
 
-**Bad:**
+**بد:**
 
 ```javascript
 const menuConfig = {
@@ -528,7 +504,7 @@ function createMenu(config) {
 createMenu(menuConfig);
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 const menuConfig = {
@@ -556,13 +532,13 @@ function createMenu(config) {
 createMenu(menuConfig);
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Don't use flags as function parameters
 
 Flags tell your user that this function does more than one thing. Functions should do one thing. Split out your functions if they are following different code paths based on a boolean.
 
-**Bad:**
+**بد:**
 
 ```javascript
 function createFile(name, temp) {
@@ -574,7 +550,7 @@ function createFile(name, temp) {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 function createFile(name) {
@@ -586,7 +562,7 @@ function createTempFile(name) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Avoid Side Effects (part 1)
 
@@ -605,7 +581,7 @@ without any structure, using mutable data types that can be written to by anythi
 and not centralizing where your side effects occur. If you can do this, you will
 be happier than the vast majority of other programmers.
 
-**Bad:**
+**بد:**
 
 ```javascript
 // Global variable referenced by following function.
@@ -621,7 +597,7 @@ splitIntoFirstAndLastName();
 console.log(name); // ['Ryan', 'McDermott'];
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 function splitIntoFirstAndLastName(name) {
@@ -635,7 +611,7 @@ console.log(name); // 'Ryan McDermott';
 console.log(newName); // ['Ryan', 'McDermott'];
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Avoid Side Effects (part 2)
 
@@ -672,7 +648,7 @@ Two caveats to mention to this approach:
    this kind of programming approach to be fast and not as memory intensive as
    it would be for you to manually clone objects and arrays.
 
-**Bad:**
+**بد:**
 
 ```javascript
 const addItemToCart = (cart, item) => {
@@ -680,7 +656,7 @@ const addItemToCart = (cart, item) => {
 };
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 const addItemToCart = (cart, item) => {
@@ -688,7 +664,7 @@ const addItemToCart = (cart, item) => {
 };
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Don't write to global functions
 
@@ -702,7 +678,7 @@ to do the same thing. What if that other library was just using `diff` to find
 the difference between the first and last elements of an array? This is why it
 would be much better to just use ES2015/ES6 classes and simply extend the `Array` global.
 
-**Bad:**
+**بد:**
 
 ```javascript
 Array.prototype.diff = function diff(comparisonArray) {
@@ -711,7 +687,7 @@ Array.prototype.diff = function diff(comparisonArray) {
 };
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 class SuperArray extends Array {
@@ -722,7 +698,7 @@ class SuperArray extends Array {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Favor functional programming over imperative programming
 
@@ -730,7 +706,7 @@ JavaScript isn't a functional language in the way that Haskell is, but it has
 a functional flavor to it. Functional languages can be cleaner and easier to test.
 Favor this style of programming when you can.
 
-**Bad:**
+**بد:**
 
 ```javascript
 const programmerOutput = [
@@ -759,7 +735,7 @@ for (let i = 0; i < programmerOutput.length; i++) {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 const programmerOutput = [
@@ -787,11 +763,11 @@ const totalOutput = programmerOutput.reduce(
 );
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Encapsulate conditionals
 
-**Bad:**
+**بد:**
 
 ```javascript
 if (fsm.state === "fetching" && isEmpty(listNode)) {
@@ -799,7 +775,7 @@ if (fsm.state === "fetching" && isEmpty(listNode)) {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 function shouldShowSpinner(fsm, listNode) {
@@ -811,11 +787,11 @@ if (shouldShowSpinner(fsmInstance, listNodeInstance)) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Avoid negative conditionals
 
-**Bad:**
+**بد:**
 
 ```javascript
 function isDOMNodeNotPresent(node) {
@@ -827,7 +803,7 @@ if (!isDOMNodeNotPresent(node)) {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 function isDOMNodePresent(node) {
@@ -839,7 +815,7 @@ if (isDOMNodePresent(node)) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Avoid conditionals
 
@@ -852,7 +828,7 @@ one thing. When you have classes and functions that have `if` statements, you
 are telling your user that your function does more than one thing. Remember,
 just do one thing.
 
-**Bad:**
+**بد:**
 
 ```javascript
 class Airplane {
@@ -870,7 +846,7 @@ class Airplane {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 class Airplane {
@@ -899,7 +875,7 @@ class Cessna extends Airplane {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Avoid type-checking (part 1)
 
@@ -908,7 +884,7 @@ Sometimes you are bitten by this freedom and it becomes tempting to do
 type-checking in your functions. There are many ways to avoid having to do this.
 The first thing to consider is consistent APIs.
 
-**Bad:**
+**بد:**
 
 ```javascript
 function travelToTexas(vehicle) {
@@ -920,7 +896,7 @@ function travelToTexas(vehicle) {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 function travelToTexas(vehicle) {
@@ -928,7 +904,7 @@ function travelToTexas(vehicle) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Avoid type-checking (part 2)
 
@@ -942,7 +918,7 @@ doesn't make up for the lost readability. Keep your JavaScript clean, write
 good tests, and have good code reviews. Otherwise, do all of that but with
 TypeScript (which, like I said, is a great alternative!).
 
-**Bad:**
+**بد:**
 
 ```javascript
 function combine(val1, val2) {
@@ -957,7 +933,7 @@ function combine(val1, val2) {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 function combine(val1, val2) {
@@ -965,7 +941,7 @@ function combine(val1, val2) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Don't over-optimize
 
@@ -975,7 +951,7 @@ resources](https://github.com/petkaantonov/bluebird/wiki/Optimization-killers)
 for seeing where optimization is lacking. Target those in the meantime, until
 they are fixed if they can be.
 
-**Bad:**
+**بد:**
 
 ```javascript
 // On old browsers, each iteration with uncached `list.length` would be costly
@@ -985,7 +961,7 @@ for (let i = 0, len = list.length; i < len; i++) {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 for (let i = 0; i < list.length; i++) {
@@ -993,7 +969,7 @@ for (let i = 0; i < list.length; i++) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Remove dead code
 
@@ -1001,7 +977,7 @@ Dead code is just as bad as duplicate code. There's no reason to keep it in
 your codebase. If it's not being called, get rid of it! It will still be safe
 in your version history if you still need it.
 
-**Bad:**
+**بد:**
 
 ```javascript
 function oldRequestModule(url) {
@@ -1016,7 +992,7 @@ const req = newRequestModule;
 inventoryTracker("apples", req, "www.inventory-awesome.io");
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 function newRequestModule(url) {
@@ -1027,7 +1003,7 @@ const req = newRequestModule;
 inventoryTracker("apples", req, "www.inventory-awesome.io");
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ## **Objects and Data Structures**
 
@@ -1045,7 +1021,7 @@ unorganized list of reasons why:
 - You can lazy load your object's properties, let's say getting it from a
   server.
 
-**Bad:**
+**بد:**
 
 ```javascript
 function makeBankAccount() {
@@ -1061,7 +1037,7 @@ const account = makeBankAccount();
 account.balance = 100;
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 function makeBankAccount() {
@@ -1090,13 +1066,13 @@ const account = makeBankAccount();
 account.setBalance(100);
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Make objects have private members
 
 This can be accomplished through closures (for ES5 and below).
 
-**Bad:**
+**بد:**
 
 ```javascript
 const Employee = function(name) {
@@ -1113,7 +1089,7 @@ delete employee.name;
 console.log(`Employee name: ${employee.getName()}`); // Employee name: undefined
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 function makeEmployee(name) {
@@ -1130,7 +1106,7 @@ delete employee.name;
 console.log(`Employee name: ${employee.getName()}`); // Employee name: John Doe
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ## **Classes**
 
@@ -1141,7 +1117,7 @@ definitions for classical ES5 classes. If you need inheritance (and be aware
 that you might not), then prefer ES2015/ES6 classes. However, prefer small functions over
 classes until you find yourself needing larger and more complex objects.
 
-**Bad:**
+**بد:**
 
 ```javascript
 const Animal = function(age) {
@@ -1181,7 +1157,7 @@ Human.prototype.constructor = Human;
 Human.prototype.speak = function speak() {};
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 class Animal {
@@ -1217,7 +1193,7 @@ class Human extends Mammal {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Use method chaining
 
@@ -1227,7 +1203,7 @@ For that reason, I say, use method chaining and take a look at how clean your co
 will be. In your class functions, simply return `this` at the end of every function,
 and you can chain further class methods onto it.
 
-**Bad:**
+**بد:**
 
 ```javascript
 class Car {
@@ -1259,7 +1235,7 @@ car.setColor("pink");
 car.save();
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 class Car {
@@ -1297,7 +1273,7 @@ class Car {
 const car = new Car("Ford", "F-150", "red").setColor("pink").save();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Prefer composition over inheritance
 
@@ -1318,7 +1294,7 @@ makes more sense than composition:
 3. You want to make global changes to derived classes by changing a base class.
    (Change the caloric expenditure of all animals when they move).
 
-**Bad:**
+**بد:**
 
 ```javascript
 class Employee {
@@ -1342,7 +1318,7 @@ class EmployeeTaxData extends Employee {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 class EmployeeTaxData {
@@ -1367,7 +1343,7 @@ class Employee {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ## **SOLID**
 
@@ -1382,7 +1358,7 @@ It's important because if too much functionality is in one class and you modify
 a piece of it, it can be difficult to understand how that will affect other
 dependent modules in your codebase.
 
-**Bad:**
+**بد:**
 
 ```javascript
 class UserSettings {
@@ -1402,7 +1378,7 @@ class UserSettings {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 class UserAuth {
@@ -1429,7 +1405,7 @@ class UserSettings {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Open/Closed Principle (OCP)
 
@@ -1438,7 +1414,7 @@ etc.) should be open for extension, but closed for modification." What does that
 mean though? This principle basically states that you should allow users to
 add new functionalities without changing existing code.
 
-**Bad:**
+**بد:**
 
 ```javascript
 class AjaxAdapter extends Adapter {
@@ -1482,7 +1458,7 @@ function makeHttpCall(url) {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 class AjaxAdapter extends Adapter {
@@ -1520,7 +1496,7 @@ class HttpRequester {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Liskov Substitution Principle (LSP)
 
@@ -1537,7 +1513,7 @@ classic Square-Rectangle example. Mathematically, a square is a rectangle, but
 if you model it using the "is-a" relationship via inheritance, you quickly
 get into trouble.
 
-**Bad:**
+**بد:**
 
 ```javascript
 class Rectangle {
@@ -1592,7 +1568,7 @@ const rectangles = [new Rectangle(), new Rectangle(), new Square()];
 renderLargeRectangles(rectangles);
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 class Shape {
@@ -1639,7 +1615,7 @@ const shapes = [new Rectangle(4, 5), new Rectangle(4, 5), new Square(5)];
 renderLargeShapes(shapes);
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Interface Segregation Principle (ISP)
 
@@ -1657,7 +1633,7 @@ huge amounts of options is beneficial, because most of the time they won't need
 all of the settings. Making them optional helps prevent having a
 "fat interface".
 
-**Bad:**
+**بد:**
 
 ```javascript
 class DOMTraverser {
@@ -1683,7 +1659,7 @@ const $ = new DOMTraverser({
 });
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 class DOMTraverser {
@@ -1717,7 +1693,7 @@ const $ = new DOMTraverser({
 });
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Dependency Inversion Principle (DIP)
 
@@ -1742,7 +1718,7 @@ and properties that an object/class exposes to another object/class. In the
 example below, the implicit contract is that any Request module for an
 `InventoryTracker` will have a `requestItems` method.
 
-**Bad:**
+**بد:**
 
 ```javascript
 class InventoryRequester {
@@ -1775,7 +1751,7 @@ const inventoryTracker = new InventoryTracker(["apples", "bananas"]);
 inventoryTracker.requestItems();
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 class InventoryTracker {
@@ -1820,7 +1796,7 @@ const inventoryTracker = new InventoryTracker(
 inventoryTracker.requestItems();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ## **Testing**
 
@@ -1841,7 +1817,7 @@ or refactoring an existing one.
 
 ### Single concept per test
 
-**Bad:**
+**بد:**
 
 ```javascript
 import assert from "assert";
@@ -1865,7 +1841,7 @@ describe("MomentJS", () => {
 });
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 import assert from "assert";
@@ -1891,7 +1867,7 @@ describe("MomentJS", () => {
 });
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ## **Concurrency**
 
@@ -1900,7 +1876,7 @@ describe("MomentJS", () => {
 Callbacks aren't clean, and they cause excessive amounts of nesting. With ES2015/ES6,
 Promises are a built-in global type. Use them!
 
-**Bad:**
+**بد:**
 
 ```javascript
 import { get } from "request";
@@ -1924,7 +1900,7 @@ get(
 );
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 import { get } from "request";
@@ -1942,7 +1918,7 @@ get("https://en.wikipedia.org/wiki/Robert_Cecil_Martin")
   });
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Async/Await are even cleaner than Promises
 
@@ -1952,7 +1928,7 @@ in an `async` keyword, and then you can write your logic imperatively without
 a `then` chain of functions. Use this if you can take advantage of ES2017/ES8 features
 today!
 
-**Bad:**
+**بد:**
 
 ```javascript
 import { get } from "request-promise";
@@ -1970,7 +1946,7 @@ get("https://en.wikipedia.org/wiki/Robert_Cecil_Martin")
   });
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 import { get } from "request-promise";
@@ -1989,7 +1965,7 @@ async function getCleanCodeArticle() {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ## **Error Handling**
 
@@ -2007,7 +1983,7 @@ to the console. If you wrap any bit of code in a `try/catch` it means you
 think an error may occur there and therefore you should have a plan,
 or create a code path, for when it occurs.
 
-**Bad:**
+**بد:**
 
 ```javascript
 try {
@@ -2017,7 +1993,7 @@ try {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 try {
@@ -2038,7 +2014,7 @@ try {
 For the same reason you shouldn't ignore caught errors
 from `try/catch`.
 
-**Bad:**
+**بد:**
 
 ```javascript
 getdata()
@@ -2050,7 +2026,7 @@ getdata()
   });
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 getdata()
@@ -2068,7 +2044,7 @@ getdata()
   });
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ## **Formatting**
 
@@ -2087,7 +2063,7 @@ JavaScript is untyped, so capitalization tells you a lot about your variables,
 functions, etc. These rules are subjective, so your team can choose whatever
 they want. The point is, no matter what you all choose, just be consistent.
 
-**Bad:**
+**بد:**
 
 ```javascript
 const DAYS_IN_WEEK = 7;
@@ -2103,7 +2079,7 @@ class animal {}
 class Alpaca {}
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 const DAYS_IN_WEEK = 7;
@@ -2119,7 +2095,7 @@ class Animal {}
 class Alpaca {}
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Function callers and callees should be close
 
@@ -2127,7 +2103,7 @@ If a function calls another, keep those functions vertically close in the source
 file. Ideally, keep the caller right above the callee. We tend to read code from
 top-to-bottom, like a newspaper. Because of this, make your code read that way.
 
-**Bad:**
+**بد:**
 
 ```javascript
 class PerformanceReview {
@@ -2167,7 +2143,7 @@ const review = new PerformanceReview(employee);
 review.perfReview();
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 class PerformanceReview {
@@ -2207,7 +2183,7 @@ const review = new PerformanceReview(employee);
 review.perfReview();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ## **Comments**
 
@@ -2215,7 +2191,7 @@ review.perfReview();
 
 Comments are an apology, not a requirement. Good code _mostly_ documents itself.
 
-**Bad:**
+**بد:**
 
 ```javascript
 function hashIt(data) {
@@ -2237,7 +2213,7 @@ function hashIt(data) {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 function hashIt(data) {
@@ -2254,13 +2230,13 @@ function hashIt(data) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Don't leave commented out code in your codebase
 
 Version control exists for a reason. Leave old code in your history.
 
-**Bad:**
+**بد:**
 
 ```javascript
 doStuff();
@@ -2269,20 +2245,20 @@ doStuff();
 // doSoMuchStuff();
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 doStuff();
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Don't have journal comments
 
 Remember, use version control! There's no need for dead code, commented code,
 and especially journal comments. Use `git log` to get history!
 
-**Bad:**
+**بد:**
 
 ```javascript
 /**
@@ -2296,7 +2272,7 @@ function combine(a, b) {
 }
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 function combine(a, b) {
@@ -2304,14 +2280,14 @@ function combine(a, b) {
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ### Avoid positional markers
 
 They usually just add noise. Let the functions and variable names along with the
 proper indentation and formatting give the visual structure to your code.
 
-**Bad:**
+**بد:**
 
 ```javascript
 ////////////////////////////////////////////////////////////////////////////////
@@ -2330,7 +2306,7 @@ const actions = function() {
 };
 ```
 
-**Good:**
+**خوب:**
 
 ```javascript
 $scope.model = {
@@ -2343,7 +2319,7 @@ const actions = function() {
 };
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
 
 ## Translation
 
@@ -2370,4 +2346,4 @@ This is also available in other languages:
 - ![it](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Italy.png) **Italian**:
   [frappacchio/clean-code-javascript/](https://github.com/frappacchio/clean-code-javascript/)
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ بازگشت به بالا](#table-of-contents)**
