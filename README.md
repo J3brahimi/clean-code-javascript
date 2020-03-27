@@ -1,6 +1,7 @@
-<p dir="rtl">
-# کد-تمیز-جاوا اسکریپت
-</p>
+<div>
+<h1 dir="rtl">
+ کد-تمیز-جاوا اسکریپت
+</h1>
 
 <div dir="rtl">
 ## فهرست مطالب
@@ -17,7 +18,8 @@
 10. [قالب بندی](#formatting)
 11. [نظرات](#comments)
 12. [ترجمه](#translation)
-    </div>
+
+</div>
 
 ## معرفی
 
@@ -2351,3 +2353,5 @@ This is also available in other languages:
   [frappacchio/clean-code-javascript/](https://github.com/frappacchio/clean-code-javascript/)
 
 **[⬆ بازگشت به بالا](#table-of-contents)**
+
+</div>
