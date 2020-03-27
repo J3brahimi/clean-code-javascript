@@ -1,7 +1,9 @@
 <div dir="rtl">
 # کد-تمیز-جاوا اسکریپت
+</div>
 
-## Table of Contents
+<div dir="rtl">
+## فهرست مطالب
 
 1. [معرفی](#introduction)
 2. [متغیرها](#variables)
@@ -15,6 +17,7 @@
 10. [قالب بندی](#formatting)
 11. [نظرات](#comments)
 12. [ترجمه](#translation)
+    </div>
 
 ## معرفی
 
@@ -2348,5 +2351,3 @@ This is also available in other languages:
   [frappacchio/clean-code-javascript/](https://github.com/frappacchio/clean-code-javascript/)
 
 **[⬆ بازگشت به بالا](#table-of-contents)**
-
-</div>
