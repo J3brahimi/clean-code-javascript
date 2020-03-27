@@ -39,11 +39,9 @@ _کد تمیز_ جمع آوری شده‌اند.
 
 **بد:**
 
-<div dir="ltr" style="text-align: left">
 ```javascript
 const yyyymmdstr = moment().format("YYYY/MM/DD");
 ```
-</div>
 
 **خوب:**
 
