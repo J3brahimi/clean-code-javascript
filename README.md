@@ -1,12 +1,8 @@
-<h1 dir="rtl">
- کد-تمیز-جاوا اسکریپت
-</h1>
-
-<h2 dir="rtl">
- فهرست مطالب
-</h2>
-
 <div dir="rtl">
+# کد-تمیز-جاوا اسکریپت
+
+## Table of Contents
+
 1. [معرفی](#introduction)
 2. [متغیرها](#variables)
 3. [توابع](#functions)
@@ -20,13 +16,8 @@
 11. [نظرات](#comments)
 12. [ترجمه](#translation)
 
-</div>
+## معرفی
 
-<h3 dir="rtl">
- معرفی
-</h3>
-
-<div dir="rtl">
 ![Humorous image of software quality estimation as a count of how many expletives
 you shout when reading code](http://www.osnews.com/images/comics/wtfm.jpg)
 
@@ -41,8 +32,6 @@ _کد تمیز_ جمع آوری شده‌اند.
 , شاید اون موقع قوانین سخت‌تری در مورد نوشتن کدها وضع بشه. اما در حال حاضر, اجازه دهید این دستورالعمل‌ها به عنوان سنگ بنایی برای ارزیابی کیفیت کدهای جاوا اسکریپت شما تیمتان استفاده شود.
 
 آخرین نکته: دانستن این نکات بلافاصله شما را به توسعه دهنده بهتری تبدیل نمی‌کند, و رعایت این نکات برای چند سال به این معنی نیست که شما دیگر اشتباهی مرتکب نمی‌شوید. هر قطعه کد را به عنوان یک پیش نویس اولیه در نظر بگیرید, مانند گلی که برای ساخت کوزه استفاده می‌شود. در نهایت, ما اشتباهات کد خود با مقایسه کردن آن با کد تمیز ویرایش می‌کنیم. وقتی اشتباهاتی در کدهای خود می‌بینید خودتان را سرزنش نکنید.
-
-</div>
 
 ## **متغیرها**
 
@@ -2359,3 +2348,5 @@ This is also available in other languages:
   [frappacchio/clean-code-javascript/](https://github.com/frappacchio/clean-code-javascript/)
 
 **[⬆ بازگشت به بالا](#table-of-contents)**
+
+</div>
